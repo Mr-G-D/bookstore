@@ -1,0 +1,84 @@
+package bookkeeper;
+
+import bookkeeper.exceptions.*;
+import  static bookkeeper.Constants.*;
+
+import java.io.*;
+import java.util.Scanner;
+
+
+public class Main {
+    public static void main(String[] args) throws FileNotFoundException {
+        System.out.println("Hello world!");
+        readFiles();
+    }
+    static void readFiles() throws FileNotFoundException {
+        Scanner scanner = new Scanner(new File(inputFileNames));
+        int count = scanner.nextInt();
+        scanner.nextLine();
+        Book[][] books = new Book[count][];
+        for (int i = 0; i < count; i++) {
+            String filename = scanner.nextLine();
+            books[i] = readIndividualFile(filename);
+        }
+        ErrorFileWriterFactory.closeSyntaxErrorFileWriter();
+    }
+
+    private static Book[] readIndividualFile(String filename) throws FileNotFoundException {
+        String[][] validBooks = new String[1000][];
+        int i = 0;
+        Scanner scanner = new Scanner(new File(dataDirectory + File.separator + filename));
+        while (scanner.hasNext()){
+            String book = scanner.nextLine();
+            String[] bookDetails = book.split(csvSplitRegex);
+            try {
+                validBooks[i++] = checkForSyntaxErrors(bookDetails);
+            } catch (SyntaxErrorException e) {
+                handleError(filename, book, e);
+                i--;
+            }
+        }
+        Book[] books = new Book[i];
+        for (i = 0; i < validBooks.length && validBooks[i]!=null; i++) {
+            books[i] = new Book(validBooks[i]);
+        }
+        return books;
+    }
+
+    private static void handleError(String filename, String book, SyntaxErrorException e) {
+        BufferedWriter writer = ErrorFileWriterFactory.getSyntaxErrorFileWriter(filename);
+        try {
+            writer.write("Error: ");
+            writer.write(e.getMessage());
+            writer.write('\n');
+            writer.write("Record: ");
+            writer.write(book);
+            writer.write('\n');
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private static String[] checkForSyntaxErrors(String[] bookDetails) throws TooFewFieldsException, TooManyFieldsException, MissingFieldException, UnknownGenreException {
+        if(bookDetails.length<6)
+            throw new TooFewFieldsException();
+        if(bookDetails.length>6)
+            throw new TooManyFieldsException();
+        for (int i = 0; i < bookDetails.length; i++) {
+            if(bookDetails[i] == null || bookDetails[i].isEmpty() || bookDetails[i].equals(" "))
+                throw new MissingFieldException(fields[i]);
+        }
+
+        boolean flag = false;
+        for (String genre: genres) {
+            if (bookDetails[4].equals(genre)) {
+                flag = true;
+                break;
+            }
+        }
+        if(!flag)
+            throw new UnknownGenreException();
+        return bookDetails;
+    }
+}
+
