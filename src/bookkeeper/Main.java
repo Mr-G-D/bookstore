@@ -21,7 +21,8 @@ public class Main {
             String filename = scanner.nextLine();
             books[i] = readIndividualFile(filename);
         }
-        ErrorFileWriterFactory.closeSyntaxErrorFileWriter();
+        FileWriterFactory.closeSyntaxErrorFileWriter();
+        FileWriterFactory.closeAllGenreBasedFileWriters();
     }
 
     private static Book[] readIndividualFile(String filename) throws FileNotFoundException {
@@ -33,10 +34,16 @@ public class Main {
             String[] bookDetails = book.split(csvSplitRegex);
             try {
                 validBooks[i++] = checkForSyntaxErrors(bookDetails);
+                BufferedWriter w = FileWriterFactory.getGenreBasedFileWriter(bookDetails[4]);
+                w.write(book);
+                w.write('\n');
             } catch (SyntaxErrorException e) {
                 handleError(filename, book, e);
                 i--;
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+
         }
         Book[] books = new Book[i];
         for (i = 0; i < validBooks.length && validBooks[i]!=null; i++) {
@@ -46,7 +53,7 @@ public class Main {
     }
 
     private static void handleError(String filename, String book, SyntaxErrorException e) {
-        BufferedWriter writer = ErrorFileWriterFactory.getSyntaxErrorFileWriter(filename);
+        BufferedWriter writer = FileWriterFactory.getSyntaxErrorFileWriter(filename);
         try {
             writer.write("Error: ");
             writer.write(e.getMessage());
