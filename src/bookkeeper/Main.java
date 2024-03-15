@@ -1,6 +1,11 @@
 package bookkeeper;
 
 import bookkeeper.exceptions.*;
+import bookkeeper.exceptions.syntax.MissingFieldException;
+import bookkeeper.exceptions.syntax.TooFewFieldsException;
+import bookkeeper.exceptions.syntax.TooManyFieldsException;
+import bookkeeper.exceptions.syntax.UnknownGenreException;
+
 import  static bookkeeper.Constants.*;
 
 import java.io.*;
@@ -11,6 +16,7 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         System.out.println("Hello world!");
         readFiles();
+        do_part2();
     }
     static void readFiles() throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(inputFileNames));
@@ -86,6 +92,23 @@ public class Main {
         if(!flag)
             throw new UnknownGenreException();
         return bookDetails;
+    }
+
+
+    public static void do_part2() throws FileNotFoundException {
+        Book[] books = new Book[genres.length];
+        for (String genre:
+             fileNameForGenres) {
+            Scanner fileName = new Scanner(new File(outputDirectory + File.separator + genre));
+            if(fileName.hasNext()){
+                try {
+                    Utils.checkForSemantics(fileName.nextLine().split(" "));
+                }catch (Exception e){
+
+                }
+            }
+        }
+
     }
 }
 
