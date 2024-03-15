@@ -1,4 +1,6 @@
-package bookkeeper.exceptions;
+package bookkeeper.exceptions.syntax;
+
+import bookkeeper.exceptions.SyntaxErrorException;
 
 /**
  * @author Sanjay Bharathi
