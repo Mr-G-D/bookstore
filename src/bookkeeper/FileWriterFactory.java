@@ -1,9 +1,6 @@
 package bookkeeper;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 import static bookkeeper.Constants.*;
 
@@ -13,7 +10,7 @@ import static bookkeeper.Constants.*;
 
 public class FileWriterFactory {
     private static BufferedWriter syntaxErrorFileWriter = null;
-    private static BufferedWriter semanticErrorFileWriter = null;
+    private static PrintWriter semanticErrorFileWriter = null;
     private static final BufferedWriter[] genreBasedFileWriter = new BufferedWriter[8];
     private static String currentFileName;
 
@@ -39,25 +36,19 @@ public class FileWriterFactory {
         return syntaxErrorFileWriter;
     }
 
-    public static BufferedWriter getSemanticErrorFileWriter(String fileName){
+    public static PrintWriter getSemanticErrorFileWriter(String fileName){
         if(semanticErrorFileWriter == null){
             try {
-                semanticErrorFileWriter = new BufferedWriter(new FileWriter(semanticErrorFileName));
+                semanticErrorFileWriter = new PrintWriter(semanticErrorFileName);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         if(!fileName.equals(currentFileName)){
             currentFileName = fileName;
-            try {
-                semanticErrorFileWriter.write("syntax error in file: " + fileName);
-                semanticErrorFileWriter.write('\n');
-                semanticErrorFileWriter.write("====================");
-                semanticErrorFileWriter.write('\n');
-            } catch (IOException e) {
-                e.printStackTrace();
-
-            }
+            semanticErrorFileWriter.println(" ");
+            semanticErrorFileWriter.println("syntax error in file: " + fileName);
+            semanticErrorFileWriter.println("====================");
         }
         return semanticErrorFileWriter;
     }

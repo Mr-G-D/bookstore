@@ -1,0 +1,135 @@
+ 
+syntax error in file: Cartoons_Comics_Books.csv
+====================
+Error: invalid isbn10
+Record: Comics Buyer's Guide Standard Catalog of Comic Books,John Jackson Miller & Maggie Thompson & Peter Bickford & Brent Frankenhoff,24.95,087349993X,CCB,2005
+Error: invalid isbn10
+Record: Private Eyes In the Comics,John A. Dinan,9.95,159393002X,CCB,2005
+Error: invalid price
+Record: Superman - The Complete History,Lee Daniels,-12.95,0811842312,CCB,2005
+Error: invalid isbn10
+Record: Worlds of Tomorrow - The Amazing Universe of Science Fiction Art,Forrest J. Ackerman & Brad Linaweaver,29.95,188805493X,CCB,2006
+Error: invalid isbn10
+Record: Blondie - The Bumstead Family History,Dean Young & Melena Ryzik,24.95,140160322X,CCB,2007
+Error: invalid isbn10
+Record: Manga Monster Madness,David Okum,16.95,158180606X,CCB,2009
+ 
+syntax error in file: Hobbies_Collectibles_Books.csv
+====================
+Error: invalid isbn10
+Record: Christie's Century of Teddy Bears,Leyla Maniera,19.95,082300645X,HCB,2005
+Error: invalid isbn10
+Record: "Monroe, Marilyn Collectibles",Clark Kidder,2.95,038079909X,HCB,2005
+Error: invalid isbn10
+Record: Antique Trader Collectible Paperback Price Guide,Gary Lovisi,16.95,089689634X,HCB,2009
+Error: invalid isbn10
+Record: Warman's Coca-Cola Collectibles Identification & Price Guide,Allan Petretti,19.95,0898693111,HCB,2009
+ 
+syntax error in file: Movies_TV.csv
+====================
+Error: invalid year
+Record: "Carney, Art - A Biography",Michael Seth Starr,11.95,1557835659,MTV,1905
+Error: invalid year
+Record: Hitchcock's London: A Reference Guide to Locations,Gary Giblin,19.95,188766467X,MTV,1905
+Error: invalid year
+Record: Modern Amazons: Warrior Women on Screen,Dominique Mainon & James Ursini,19.95,1879103272,MTV,1905
+Error: invalid year
+Record: You're Not Old Enough Son,Barry Atkinson,19.95,1887664688,MTV,1905
+Error: invalid year
+Record: Gunsmoke - A Complete History And Analysis of The Legendary Broadcast Series With A Comprehensive Episode - By - Episode Guide To Both The Radio And Television Programs,Suzanne Barabas & Gabor Barabas,85.5,9780899504186,MTV,1990
+Error: invalid year
+Record: "Horror Film Directors, 1931 - 1990",Dennis Fischer,85.5,9780899506098,MTV,1991
+Error: invalid year
+Record: "Lewis, Jerry - An Analytical Filmography of The Innovative Comic",James L. Neibaur & Ted Okuda,44.95,9780899509617,MTV,1994
+Error: invalid year
+Record: Hammer Films - An Exhaustive Filmography,Tom Johnson & Deborah Del Vecchio,66.95,9780786400348,MTV,1995
+Error: invalid year
+Record: Official Mickey Mouse Club Book,Lorraine Santoli,1.99,0786880422,MTV,1995
+Error: invalid price
+Record: Encyclopedia of Motion Picture Sound,Marty McGee,-85.5,9780786410231,MTV,2001
+Error: invalid price
+Record: "Westerns And American Culture, 1930-1955",R. Philip Loy,-35.95,9780786410767,MTV,2001
+Error: invalid price
+Record: Comical Co - Stars of Television - From Ed Norton To Kramer,Robert Pegg,-39.95,9780786413416,MTV,2002
+Error: invalid price
+Record: "De Sica, Vittorio - Director, Actor, Screenwriter",Bert Cardullo,-66.95,9780786411351,MTV,2002
+Error: invalid isbn13
+Record: "Hayward, Susan - Her Films and Life",Kim R. Holston,29.95,8.78079E+12,MTV,2002
+Error: invalid price
+Record: "Hitler Filmography - Worldwide Feature Film And Television Miniseries Portrayals, 1940 Through 2000",Charles P. Mitchell,-34.95,9780786445851,MTV,2002
+Error: invalid price
+Record: "Horror Film Stars, Third Edition",Michael R. Pitts,-39.95,9780786410521,MTV,2002
+Error: invalid price
+Record: "Stone, Fred - Circus Performer And Musical Comedy Star",Armond Fields,-39.95,9780786411610,MTV,2002
+Error: invalid isbn13
+Record: Film Industry In Argentina - An Illustrated Cultural History,Jorge Finkielman,44.95,9781786416288,MTV,2003
+Error: invalid price
+Record: "Monty Python, Shakespeare and English Renaissance Drama",Darl Larsen,-30.95,9780786415045,MTV,2003
+Error: invalid price
+Record: Vitaphone Films - A Catalogue of The Features And Shorts,Roy Liebman,-85.5,9780786412792,MTV,2003
+Error: invalid price
+Record: American Martial Arts Film,M. Ray Lott,-44.95,9780786418367,MTV,2004
+Error: invalid price
+Record: Product Placement In Hollywood Films,Kerry Segrave,-35.95,9780786419043,MTV,2004
+Error: invalid isbn13
+Record: Actors Studio - A History,Shelly Frome,35.95,9.78179E+12,MTV,2005
+Error: invalid isbn10
+Record: Billboard's Video Yearbook: 1994,Joel Whitburn,10,089820111X,MTV,2005
+Error: invalid isbn10
+Record: "Bunuel, Luis - Bunuel",John Baxter,4.95,078670506X,MTV,2005
+Error: invalid isbn10
+Record: "Cushing, Peter - Autobiography and Past Forgetting",Peter Cushing,16.95,1187664262,MTV,2005
+Error: invalid year
+Record: "Doctor Who Error Finder - Plot, Continuity And Production Mistakes In The Television Series And Films",R.H. Langley,44.95,9780786419906,MTV,205
+Error: invalid isbn10
+Record: Drums O' Terror: Voodoo In The Cinema,Bryan Senn,19.95,1841950931,MTV,2005
+Error: invalid isbn10
+Record: Gone with the Wind,Herb Bridges,5.95,067168387X,MTV,2005
+Error: invalid price
+Record: "Kubrick, Stanley - Seven Films Analyzed",Randy Rasmussen,-35.95,9780786421527,MTV,2005
+Error: invalid isbn10
+Record: "Roeper, Richard - 10 Sure Signs A Movie Character Is Doomed",Richard Roeper,3.95,078688830X,MTV,2005
+Error: invalid isbn10
+Record: "Beatty, Warren - Sexiest Man Alive: A Biography of Warren Beatty",Ellis Amburn,5.95,006018566X,MTV,2006
+Error: invalid isbn10
+Record: "Brando, Marlon - The Way It's Never Been Done Before: My Friendship With Marlon Brando",George Englund,4.95,1160786302,MTV,2006
+Error: invalid isbn10
+Record: "Brown, Joe E. - Film Comedian and Baseball Buffoon",Wes D. Gerhing,34.95,078642589X,MTV,2006
+Error: invalid isbn10
+Record: "Chaplin, Charlie - Comic Genius",David Robinson,4.95,0810928842,MTV,2006
+Error: invalid price
+Record: Cuban Filmography - 1897 Through 2001,Alfonso J. Garcia Osuna,-49.5,9780786427277,MTV,2006
+Error: invalid price
+Record: "Garfield, John - The Illustrated Career In Films And On Stage",Patrick J. McGrath,-35.95,9780786428489,MTV,2006
+Error: invalid year
+Record: "Hitchcock, Alfred - It's Only a Movie: Personal Biography",Charlotte Chandler,12.95,1557836922,MTV,2406
+Error: invalid isbn10
+Record: "Martin, Dean - Memories Are Made of This: Dean Martin Through His Daughter's Eyes",Deana Martin,5.95,140005043X,MTV,2006
+Error: invalid price
+Record: Meat is Murder! An Illustrated Guide to Cannibal Culture,Mikita Brottman,-6.95,1840680407,MTV,2006
+Error: invalid isbn10
+Record: "Peckinpah, Sam - Films of Sam Peckinpah",Neil Fulwood,16.95,071348733X,MTV,2006
+Error: invalid isbn10
+Record: Republic Pictures Checklist,Len D. Martin,34.95,078642740X,MTV,2006
+Error: invalid price
+Record: Twelve O'Clock High Logbook,Allan T. Duffin & Paul Matheis,-24.95,159393033X,MTV,2206
+Error: invalid isbn10
+Record: "Alley, Kirstie - How To Lose Your Ass And Regain Your Life: Reluctant Confessions of a Big-Butted Star",Kirstie Alley,5.95,159486232X,MTV,2007
+Error: invalid isbn10
+Record: "Moreland, Mantan - Mantan the Funnyman: The Life and Times of Mantan Moreland",Michael H. Price,29.95,188766470X,MTV,2007
+Error: invalid isbn10
+Record: "Peckinpah, Sam - Portrait In Montage",Garner Simmons,13.95,087910273X,MTV,2007
+Error: invalid isbn10
+Record: "Sennett, Mack - Keystone: The Life And Clowns of Mack Sennett",Simon Louvish,7.95,057121276X,MTV,2007
+Error: invalid isbn10
+Record: "The Incredible World of Spy-Fi - Wild And Crazy Spy Gadgets, Props And Artifacts From TV And The Movies",Danny Biederman,7.95,081184224X,MTV,2007
+Error: invalid isbn10
+Record: "Welles, Orson - Stories of His Life",Peter Conrad,5.95,057121164X,MTV,2007
+Error: invalid isbn10
+Record: Avengers - On Location,Chris Bentley,19.95,190528747X,MTV,2008
+Error: invalid isbn10
+Record: "Googies: Coffeeshop to the Stars, Vol. 2 - The Golden Years",Steve Hayes,16.95,159393307X,MTV,2008
+Error: invalid isbn10
+Record: Mickey Rooney as Archie Bunker and Other TV Casting Almosts,Ted Sennett & Eila Mell,24.95,159393145X,MTV,2008
+Error: invalid isbn10
+Record: "Rigg, Diana - Biography",Kathleen Tracy,12.95,193210027X,

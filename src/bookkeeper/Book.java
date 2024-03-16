@@ -10,10 +10,30 @@ import java.io.Serializable;
 public class Book implements Serializable {
 
     private String title;
-
     private String authors;
     private String isbn;
     private String genre;
+    private double price;
+    private int year;
+
+    public Book(String[] bookDetails) {
+        this.title = bookDetails[0];
+        this.authors = bookDetails[1];
+        this.price = Double.parseDouble(bookDetails[2]);
+        this.isbn = bookDetails[3];
+        this.genre = bookDetails[4];
+        this.year = Integer.parseInt(bookDetails[5]);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
 
     public String getAuthors() {
         return authors;
@@ -55,17 +75,6 @@ public class Book implements Serializable {
         this.title = title;
     }
 
-    private double price;
-    private int year;
-
-    public Book(String[] bookDetails) {
-        this.title = bookDetails[0];
-        this.authors = bookDetails[1];
-        this.price = Double.parseDouble(bookDetails[2]);
-        this.isbn = bookDetails[3];
-        this.genre = bookDetails[4];
-        this.year = Integer.parseInt(bookDetails[5]);
-    }
 
     public int getYear() {
         return year;

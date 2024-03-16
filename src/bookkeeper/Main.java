@@ -9,13 +9,14 @@ import bookkeeper.exceptions.syntax.UnknownGenreException;
 import  static bookkeeper.Constants.*;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.Scanner;
 
 
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException, SemanticErrorException {
         System.out.println("Hello world!");
-        readFiles();
+//        readFiles();
         do_part2();
     }
     static void readFiles() throws FileNotFoundException {
@@ -96,21 +97,38 @@ public class Main {
     }
 
 
-    public static void do_part2() throws FileNotFoundException {
-        Book[] books = new Book[genres.length];
+    public static void do_part2() throws IOException, SemanticErrorException {
+        Book[] books = new Book[100000];
         int bookItr = 0;
         for (String genre:
              fileNameForGenres) {
+            System.out.println(genre);
             Scanner fileName = new Scanner(new File(outputDirectory + File.separator + genre));
-            if(fileName.hasNext()){
-                String book = fileName.nextLine();
+            while(fileName.hasNext()){
+                String b = fileName.nextLine();
+                String[] book = b.split(csvSplitRegex);
                 try {
-                    Utils.checkForSemantics(book.split(" "));
-                    books[bookItr++] = new Book(book.split(" "));
+//                    System.out.println(book[0]);
+                    Utils.checkForSemantics(book);
+                    books[bookItr++] = new Book(book);
                 }catch (SemanticErrorException e){
-                    Utils.handleSemanticError(genre, book, e);
+                    Utils.handleSemanticError(genre, b, e);
+//                    bookItr--;
                 }
             }
+
+            try{
+                ObjectOutput objectOutput = new ObjectOutputStream(new FileOutputStream(part2OutputDirectory + File.separator + genre + ".ser"));
+                for (Book b:
+                        books){
+                    objectOutput.writeObject(b);
+                }
+
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+
+
         }
 
     }
