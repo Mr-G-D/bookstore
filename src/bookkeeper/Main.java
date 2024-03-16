@@ -67,6 +67,7 @@ public class Main {
             writer.write("Record: ");
             writer.write(book);
             writer.write('\n');
+            writer.write('\n');
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -97,14 +98,17 @@ public class Main {
 
     public static void do_part2() throws FileNotFoundException {
         Book[] books = new Book[genres.length];
+        int bookItr = 0;
         for (String genre:
              fileNameForGenres) {
             Scanner fileName = new Scanner(new File(outputDirectory + File.separator + genre));
             if(fileName.hasNext()){
+                String book = fileName.nextLine();
                 try {
-                    Utils.checkForSemantics(fileName.nextLine().split(" "));
-                }catch (Exception e){
-
+                    Utils.checkForSemantics(book.split(" "));
+                    books[bookItr++] = new Book(book.split(" "));
+                }catch (SemanticErrorException e){
+                    Utils.handleSemanticError(genre, book, e);
                 }
             }
         }

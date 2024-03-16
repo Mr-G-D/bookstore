@@ -1,10 +1,14 @@
 package bookkeeper;
 
 import bookkeeper.exceptions.SemanticErrorException;
+import bookkeeper.exceptions.SyntaxErrorException;
 import bookkeeper.exceptions.semantic.BadIsbn10Exception;
 import bookkeeper.exceptions.semantic.BadIsbn13Exception;
 import bookkeeper.exceptions.semantic.BadPriceException;
 import bookkeeper.exceptions.semantic.BadYearException;
+
+import java.io.BufferedWriter;
+import java.io.IOException;
 
 /**
  * @author DINESH KUMAR
@@ -62,6 +66,21 @@ public class Utils {
             }
         }
         return sum % 10 == 0;
+    }
+
+    public static void handleSemanticError(String filename, String book, SemanticErrorException e) {
+        BufferedWriter writer = FileWriterFactory.getSemanticErrorFileWriter(filename);
+        try {
+            writer.write("Error: ");
+            writer.write(e.getMessage());
+            writer.write('\n');
+            writer.write("Record: ");
+            writer.write(book);
+            writer.write('\n');
+            writer.write('\n');
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
 //    public static void main(String[] args) {

@@ -21,9 +21,11 @@ public class Constants {
 
     static final String dataDirectory = "./data";
     static final String outputDirectory = "./output";
+    static final String part2OutputDirectory = "./part2Output";
 
     static final String inputFileNames = dataDirectory + "/part1_input_file_names.txt";
     static final String syntaxErrorFileName = outputDirectory + "/syntax_error_file.txt";
+    static final String semanticErrorFileName = part2OutputDirectory + "/semantic_error_file.txt";
 
 
     static final String[] genres = {"CCB", "HCB", "MTV", "MRB", "NEB", "OTR", "SSM", "TPA"};
