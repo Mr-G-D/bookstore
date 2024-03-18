@@ -47,7 +47,7 @@ public class FileWriterFactory {
         if(!fileName.equals(currentFileName)){
             currentFileName = fileName;
             semanticErrorFileWriter.println(" ");
-            semanticErrorFileWriter.println("syntax error in file: " + fileName);
+            semanticErrorFileWriter.println("Semantic error in file: " + fileName);
             semanticErrorFileWriter.println("====================");
         }
         return semanticErrorFileWriter;

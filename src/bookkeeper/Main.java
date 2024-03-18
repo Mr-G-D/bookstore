@@ -18,6 +18,7 @@ public class Main {
         System.out.println("Hello world!");
 //        readFiles();
         do_part2();
+        do_part3();
     }
     static void readFiles() throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(inputFileNames));
@@ -71,6 +72,12 @@ public class Main {
             writer.write('\n');
         } catch (IOException ex) {
             ex.printStackTrace();
+        } finally {
+            try {
+                writer.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 
@@ -97,12 +104,11 @@ public class Main {
     }
 
 
-    public static void do_part2() throws IOException, SemanticErrorException {
+    public static void do_part2() throws IOException {
         Book[] books = new Book[100000];
         int bookItr = 0;
         for (String genre:
              fileNameForGenres) {
-            System.out.println(genre);
             Scanner fileName = new Scanner(new File(outputDirectory + File.separator + genre));
             while(fileName.hasNext()){
                 String b = fileName.nextLine();
@@ -113,6 +119,7 @@ public class Main {
                     books[bookItr++] = new Book(book);
                 }catch (SemanticErrorException e){
                     Utils.handleSemanticError(genre, b, e);
+                    System.out.println(b);
 //                    bookItr--;
                 }
             }
@@ -130,6 +137,10 @@ public class Main {
 
 
         }
+
+    }
+
+    public static void do_part3(){
 
     }
 }

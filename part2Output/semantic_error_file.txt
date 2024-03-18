@@ -1,5 +1,5 @@
  
-syntax error in file: Cartoons_Comics_Books.csv
+Semantic error in file: Cartoons_Comics_Books.csv
 ====================
 Error: invalid isbn10
 Record: Comics Buyer's Guide Standard Catalog of Comic Books,John Jackson Miller & Maggie Thompson & Peter Bickford & Brent Frankenhoff,24.95,087349993X,CCB,2005
@@ -14,7 +14,7 @@ Record: Blondie - The Bumstead Family History,Dean Young & Melena Ryzik,24.95,14
 Error: invalid isbn10
 Record: Manga Monster Madness,David Okum,16.95,158180606X,CCB,2009
  
-syntax error in file: Hobbies_Collectibles_Books.csv
+Semantic error in file: Hobbies_Collectibles_Books.csv
 ====================
 Error: invalid isbn10
 Record: Christie's Century of Teddy Bears,Leyla Maniera,19.95,082300645X,HCB,2005
@@ -25,7 +25,7 @@ Record: Antique Trader Collectible Paperback Price Guide,Gary Lovisi,16.95,08968
 Error: invalid isbn10
 Record: Warman's Coca-Cola Collectibles Identification & Price Guide,Allan Petretti,19.95,0898693111,HCB,2009
  
-syntax error in file: Movies_TV.csv
+Semantic error in file: Movies_TV.csv
 ====================
 Error: invalid year
 Record: "Carney, Art - A Biography",Michael Seth Starr,11.95,1557835659,MTV,1905
@@ -132,4 +132,4 @@ Record: "Googies: Coffeeshop to the Stars, Vol. 2 - The Golden Years",Steve Haye
 Error: invalid isbn10
 Record: Mickey Rooney as Archie Bunker and Other TV Casting Almosts,Ted Sennett & Eila Mell,24.95,159393145X,MTV,2008
 Error: invalid isbn10
-Record: "Rigg, Diana - Biography",Kathleen Tracy,12.95,193210027X,
+Record: "Rigg, Diana - Biography",Kathleen Tracy,12.95,19321
