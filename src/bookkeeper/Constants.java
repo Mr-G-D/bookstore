@@ -40,4 +40,15 @@ public class Constants {
             "Sports_Sports_Memorabilia.csv",
             "Trains_Planes_Automobiles.csv"
     };
+
+    static final String[] binaryFileNames = {
+            "Cartoons_Comics_Books.csv.ser",
+            "Hobbies_Collectibles_Books.csv.ser",
+            "Movies_TV.csv.ser",
+            "Music_Radio_Books.csv.ser",
+            "Nostalgia_Eclectic_Books.csv.ser",
+            "Old_Time_Radio.csv.ser",
+            "Sports_Sports_Memorabilia.csv.ser",
+            "Trains_Planes_Automobiles.csv.ser"
+    };
 }

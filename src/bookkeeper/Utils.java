@@ -12,6 +12,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.Objects;
+import java.util.Scanner;
 
 /**
  * @author DINESH KUMAR
@@ -89,7 +91,55 @@ public class Utils {
 //            writer.write('\n');
     }
 
-//    public static void main(String[] args) {
-//        checkISBN10("0306406152");
-//    }
+    public static String displayMainMenu(String str){
+        System.out.println("-----------------------------------------------------");
+//        System.out.println("");
+        System.out.println("                     Main Menu                       ");
+//        System.out.println("");
+        System.out.println("-----------------------------------------------------");
+        System.out.println("v View the selected file: " + str);
+        System.out.println("s Select a file to view");
+        System.out.println("x Exit");
+        System.out.println("-----------------------------------------------------");
+        System.out.println("");
+        System.out.print("Enter Your Choice: ");
+        Scanner input = new Scanner(System.in);
+        return (input.nextLine());
+    }
+
+    public static void displaySubMenu(){
+        System.out.println("-----------------------------------------------------");
+//        System.out.println("");
+        System.out.println("                   File Sub Menu                     ");
+//        System.out.println("");
+        System.out.println("-----------------------------------------------------");
+        
+        String[] files = Constants.binaryFileNames;
+
+        for (int i = 0; i < files.length; i++) {
+            String f = String.format("%-5d %-40s %5s", i+1, files[i], "(records)");
+            System.out.println(f);
+        }
+        System.out.println("-----------------------------------------------------");
+        System.out.println("");
+        System.out.print("Enter Your Choice: ");
+        Scanner input = new Scanner(System.in);
+        int i = input.nextInt();
+        String str = displayMainMenu(files[i-1]);
+        if(Objects.equals(str, "v")){
+            System.out.println("v");
+        } else if (Objects.equals(str, "s")) {
+            displaySubMenu();
+        }
+    }
+
+
+    public static void navigate(String s){
+
+    }
+
+
+    public static void main(String[] args) {
+        displaySubMenu();
+    }
 }
