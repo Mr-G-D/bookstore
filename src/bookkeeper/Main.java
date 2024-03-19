@@ -144,14 +144,7 @@ public class Main {
     public static void do_part3(){
         String[] fileNames = Constants.binaryFileNames;
 
-        String s = Utils.displayMainMenu(fileNames[0]);
-
-
-        if(Objects.equals(s, "s")){
-            Utils.displaySubMenu();
-        } else if (Objects.equals(s, "v")) {
-            System.out.println("v");
-        }
+        Utils.navigate(fileNames[0]);
 
     }
 }

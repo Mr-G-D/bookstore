@@ -125,16 +125,17 @@ public class Utils {
         System.out.print("Enter Your Choice: ");
         Scanner input = new Scanner(System.in);
         int i = input.nextInt();
-        String str = displayMainMenu(files[i-1]);
+        navigate(files[i-1]);
+    }
+
+
+    public static void navigate(String s){
+        String str = displayMainMenu(s);
         if(Objects.equals(str, "v")){
             System.out.println("v");
         } else if (Objects.equals(str, "s")) {
             displaySubMenu();
         }
-    }
-
-
-    public static void navigate(String s){
 
     }
 
