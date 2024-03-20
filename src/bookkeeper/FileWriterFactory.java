@@ -61,6 +61,10 @@ public class FileWriterFactory {
             e.printStackTrace();
         }
     }
+    public static void closeSemanticErrorFileWriter(){
+        semanticErrorFileWriter.close();
+        semanticErrorFileWriter = null;
+    }
 
     public static BufferedWriter getGenreBasedFileWriter(String genreName){
         int index = indexOf(genres, genreName);

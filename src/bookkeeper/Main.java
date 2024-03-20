@@ -15,11 +15,11 @@ import java.util.Scanner;
 
 
 public class Main {
-    public static void main(String[] args) throws IOException, SemanticErrorException {
-        System.out.println("Hello world!");
+    public static void main(String[] args) throws IOException, SemanticErrorException, ClassNotFoundException {
+//        System.out.println("Hello world!");
 //        readFiles();
-//        do_part2();
-        do_part3();
+        do_part2();
+//        do_part3();
     }
     static void readFiles() throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(inputFileNames));
@@ -73,12 +73,6 @@ public class Main {
             writer.write('\n');
         } catch (IOException ex) {
             ex.printStackTrace();
-        } finally {
-            try {
-                writer.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
         }
     }
 
@@ -139,13 +133,16 @@ public class Main {
 
         }
 
+        FileWriterFactory.closeSemanticErrorFileWriter();
+
     }
 
-    public static void do_part3(){
+    public static void do_part3() throws IOException, ClassNotFoundException {
         String[] fileNames = Constants.binaryFileNames;
 
         Utils.navigate(fileNames[0]);
-
+//        int i = Utils.findRecords(fileNames[0]);
+//        System.out.println(i);
     }
 }
 

@@ -7,10 +7,7 @@ import bookkeeper.exceptions.semantic.BadIsbn13Exception;
 import bookkeeper.exceptions.semantic.BadPriceException;
 import bookkeeper.exceptions.semantic.BadYearException;
 
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
@@ -89,6 +86,7 @@ public class Utils {
         writer.print("Record: ");
         writer.println(book);
 //            writer.write('\n');
+//        writer.close();
     }
 
     public static String displayMainMenu(String str){
@@ -107,7 +105,7 @@ public class Utils {
         return (input.nextLine());
     }
 
-    public static void displaySubMenu(){
+    public static void displaySubMenu() throws IOException, ClassNotFoundException {
         System.out.println("-----------------------------------------------------");
 //        System.out.println("");
         System.out.println("                   File Sub Menu                     ");
@@ -117,8 +115,9 @@ public class Utils {
         String[] files = Constants.binaryFileNames;
 
         for (int i = 0; i < files.length; i++) {
-            String f = String.format("%-5d %-40s %5s", i+1, files[i], "(records)");
+            String f = String.format("%-5d %-40s %5s", i+1, files[i], "(" + findRecords(files[i]) + " records)");
             System.out.println(f);
+
         }
         System.out.println("-----------------------------------------------------");
         System.out.println("");
@@ -129,7 +128,7 @@ public class Utils {
     }
 
 
-    public static void navigate(String s){
+    public static void navigate(String s) throws IOException, ClassNotFoundException {
         String str = displayMainMenu(s);
         if(Objects.equals(str, "v")){
             System.out.println("v");
@@ -139,8 +138,19 @@ public class Utils {
 
     }
 
+    public static int findRecords(String str) throws IOException, ClassNotFoundException {
+        ObjectInputStream file = new ObjectInputStream(new FileInputStream(Constants.part2OutputDirectory + File.separator + str));
 
-    public static void main(String[] args) {
+        int count = 0;
+        while (file.readObject() != null){
+            count++;
+        }
+
+        return count;
+    }
+
+
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         displaySubMenu();
     }
 }
