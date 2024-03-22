@@ -51,4 +51,7 @@ public class Constants {
             "Sports_Sports_Memorabilia.csv.ser",
             "Trains_Planes_Automobiles.csv.ser"
     };
+
+    static final int[] recordCount = new int[binaryFileNames.length];
+    static final Book[][] deserializedBooks = new Book[Constants.binaryFileNames.length][];
 }

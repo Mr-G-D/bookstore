@@ -1,15 +1,13 @@
 package bookkeeper;
 
 import bookkeeper.exceptions.SemanticErrorException;
-import bookkeeper.exceptions.SyntaxErrorException;
 import bookkeeper.exceptions.semantic.BadIsbn10Exception;
 import bookkeeper.exceptions.semantic.BadIsbn13Exception;
 import bookkeeper.exceptions.semantic.BadPriceException;
 import bookkeeper.exceptions.semantic.BadYearException;
+import exceptions.ExitViewingCommandException;
 
 import java.io.*;
-import java.util.Arrays;
-import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -86,7 +84,6 @@ public class Utils {
         writer.print("Record: ");
         writer.println(book);
 //            writer.write('\n');
-//        writer.close();
     }
 
     public static String displayMainMenu(String str){
@@ -99,7 +96,7 @@ public class Utils {
         System.out.println("s Select a file to view");
         System.out.println("x Exit");
         System.out.println("-----------------------------------------------------");
-        System.out.println("");
+        System.out.println();
         System.out.print("Enter Your Choice: ");
         Scanner input = new Scanner(System.in);
         return (input.nextLine());
@@ -111,7 +108,7 @@ public class Utils {
         System.out.println("                   File Sub Menu                     ");
 //        System.out.println("");
         System.out.println("-----------------------------------------------------");
-        
+
         String[] files = Constants.binaryFileNames;
 
         for (int i = 0; i < files.length; i++) {
@@ -120,7 +117,7 @@ public class Utils {
 
         }
         System.out.println("-----------------------------------------------------");
-        System.out.println("");
+        System.out.println();
         System.out.print("Enter Your Choice: ");
         Scanner input = new Scanner(System.in);
         int i = input.nextInt();
@@ -130,27 +127,102 @@ public class Utils {
 
     public static void navigate(String s) throws IOException, ClassNotFoundException {
         String str = displayMainMenu(s);
-        if(Objects.equals(str, "v")){
-            System.out.println("v");
-        } else if (Objects.equals(str, "s")) {
+        if(str.equals("v")){
+            displayFile(s);
+        } else if (str.equals("s")) {
             displaySubMenu();
+        } else if (!(str.equalsIgnoreCase("x"))){
+            System.out.println("Not a valid option");
+            navigate(s);
         }
+    }
+
+    private static void displayFile(String fileName) throws IOException, ClassNotFoundException {
+        int cursor = 0;
+        Scanner kbd = new Scanner(System.in);
+        String f = String.format("%-5s %-40s %5s", "Viewing", fileName, "(" + findRecords(fileName) + " records)");
+        System.out.println(f);
+        Book[] books = Constants.deserializedBooks[indexOf(Constants.binaryFileNames, fileName)];
+        while (true) {
+            System.out.print("Enter viewing command: ");
+            int ip = kbd.nextInt();
+            try {
+                cursor = displayRange(ip, cursor, books);
+            } catch (ExitViewingCommandException e) {
+                break;
+            }
+        }
+        navigate(fileName);
 
     }
 
-    public static int findRecords(String str) throws IOException, ClassNotFoundException {
-        ObjectInputStream file = new ObjectInputStream(new FileInputStream(Constants.part2OutputDirectory + File.separator + str));
-
-        int count = 0;
-        while (file.readObject() != null){
-            count++;
+    private static int displayRange(int ip, int cursor, Book[] books) throws ExitViewingCommandException {
+        if(ip==0)
+            throw new ExitViewingCommandException();
+        if(ip < 0){
+            int x = ip * -1;
+            do{
+                System.out.println(books[cursor]);
+                x--;
+                cursor--;
+            }while (cursor >= 0 && cursor < books.length && x>0);
+            if(cursor<0){
+                System.out.println("BOF has been reached");
+            }
+            cursor++;
+        } else{
+            do{
+                System.out.println(books[cursor]);
+                cursor++;
+                ip--;
+            }while (cursor < books.length && ip>0);
+            if(cursor >= books.length){
+                System.out.println("EOF has been reached");
+            }
+            cursor--;
         }
 
-        return count;
+        return cursor;
+    }
+
+    private static Book[] readBooksFromFile(String str) throws IOException, ClassNotFoundException {
+        Book[] books = new Book[findRecords(str)];
+        int bookItr = 0;
+        ObjectInputStream fileStream = new ObjectInputStream(new FileInputStream(Constants.part2OutputDirectory + File.separator + str));
+        Book book = (Book) fileStream.readObject();
+        while(book != null){
+            books[bookItr++] = book;
+            try {
+                book = (Book) fileStream.readObject();
+            }catch (EOFException e){
+                book = null;
+            }
+        }
+        return books;
+    }
+
+    public static int findRecords(String fileName){
+        return Constants.recordCount[indexOf(Constants.binaryFileNames, fileName)];
     }
 
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
-        displaySubMenu();
+    public static int indexOf(String[] array, String searchString) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equals(searchString)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static void fillBooks() {
+        int fileCounter = 0;
+        for (String fileName: Constants.binaryFileNames) {
+            try {
+                Constants.deserializedBooks[fileCounter++] = readBooksFromFile(fileName);
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

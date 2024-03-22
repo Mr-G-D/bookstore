@@ -9,19 +9,17 @@ import bookkeeper.exceptions.syntax.UnknownGenreException;
 import  static bookkeeper.Constants.*;
 
 import java.io.*;
-import java.util.Arrays;
-import java.util.Objects;
 import java.util.Scanner;
 
 
 public class Main {
     public static void main(String[] args) throws IOException, SemanticErrorException, ClassNotFoundException {
-//        System.out.println("Hello world!");
-//        readFiles();
+        System.out.println("Hello world!");
+        do_part1();
         do_part2();
-//        do_part3();
+        do_part3();
     }
-    static void readFiles() throws FileNotFoundException {
+    static void do_part1() throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(inputFileNames));
         int count = scanner.nextInt();
         scanner.nextLine();
@@ -100,49 +98,42 @@ public class Main {
 
 
     public static void do_part2() throws IOException {
-        Book[] books = new Book[100000];
-        int bookItr = 0;
+        int genreItr = 0;
         for (String genre:
              fileNameForGenres) {
+            Book[] books = new Book[100000];
+            int bookItr = 0;
             Scanner fileName = new Scanner(new File(outputDirectory + File.separator + genre));
             while(fileName.hasNext()){
                 String b = fileName.nextLine();
                 String[] book = b.split(csvSplitRegex);
                 try {
-//                    System.out.println(book[0]);
                     Utils.checkForSemantics(book);
                     books[bookItr++] = new Book(book);
                 }catch (SemanticErrorException e){
                     Utils.handleSemanticError(genre, b, e);
-                    System.out.println(b);
-//                    bookItr--;
                 }
             }
+            recordCount[genreItr++] = bookItr;
 
             try{
                 ObjectOutput objectOutput = new ObjectOutputStream(new FileOutputStream(part2OutputDirectory + File.separator + genre + ".ser"));
                 for (Book b:
                         books){
-                    objectOutput.writeObject(b);
+                    if(b!=null)
+                        objectOutput.writeObject(b);
                 }
 
             }catch (IOException e){
                 e.printStackTrace();
             }
-
-
         }
-
         FileWriterFactory.closeSemanticErrorFileWriter();
-
     }
 
     public static void do_part3() throws IOException, ClassNotFoundException {
-        String[] fileNames = Constants.binaryFileNames;
-
-        Utils.navigate(fileNames[0]);
-//        int i = Utils.findRecords(fileNames[0]);
-//        System.out.println(i);
+        Utils.fillBooks();
+        Utils.navigate(Constants.binaryFileNames[0]);
     }
 }
 

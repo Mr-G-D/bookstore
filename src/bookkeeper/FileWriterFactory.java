@@ -67,7 +67,7 @@ public class FileWriterFactory {
     }
 
     public static BufferedWriter getGenreBasedFileWriter(String genreName){
-        int index = indexOf(genres, genreName);
+        int index = Utils.indexOf(genres, genreName);
         if(genreBasedFileWriter[index] == null){
             try {
                 genreBasedFileWriter[index] =
@@ -88,15 +88,8 @@ public class FileWriterFactory {
                 e.printStackTrace();
             }
         }
+        currentFileName = null;
     }
 
 
-    public static int indexOf(String[] array, String searchString) {
-        for (int i = 0; i < array.length; i++) {
-            if (array[i].equals(searchString)) {
-                return i;
-            }
-        }
-        return -1;
-    }
 }
