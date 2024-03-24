@@ -10,7 +10,7 @@ import static bookkeeper.Constants.*;
  * Written by: Dinesh Kumar Gopinathan - 40273281, Sanjay Bharathi Subramanian - 40248572
  * 24 March 2024
  *
- * This class is used to create the file writers for the different types of errors
+ * This class is used to create the file writers
  */
 
 public class FileWriterFactory {
