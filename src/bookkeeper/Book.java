@@ -8,9 +8,8 @@ import java.io.Serializable;
  * Assignment 2
  * Written by: Dinesh Kumar Gopinathan - 40273281, Sanjay Bharathi Subramanian - 40248572
  * 24 March 2024
- */
-
-/**
+ *
+ *
  * This class is used to store the details of a book
  */
 public class Book implements Serializable {
