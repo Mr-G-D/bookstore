@@ -11,7 +11,9 @@ import bookkeeper.exceptions.SemanticErrorException;
  *
  */
 public class BadIsbn10Exception extends SemanticErrorException {
-
+    /**
+     * Constructor
+     */
     public BadIsbn10Exception(){
         super("invalid isbn10");
     }

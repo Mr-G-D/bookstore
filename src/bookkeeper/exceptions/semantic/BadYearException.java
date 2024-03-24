@@ -10,7 +10,9 @@ import bookkeeper.exceptions.SemanticErrorException;
  * 24 March 2024
  */
 public class BadYearException extends SemanticErrorException {
-
+    /**
+     * Constructor
+     */
     public BadYearException(){
         super("invalid year");
     }

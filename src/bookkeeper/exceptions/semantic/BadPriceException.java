@@ -10,7 +10,9 @@ import bookkeeper.exceptions.SemanticErrorException;
  * 24 March 2024
  */
 public class BadPriceException extends SemanticErrorException {
-
+    /**
+     * Constructor
+     */
     public BadPriceException(){
         super("invalid price");
     }
