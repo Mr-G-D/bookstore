@@ -1,6 +1,10 @@
 package bookkeeper;
 
 import bookkeeper.exceptions.*;
+import bookkeeper.exceptions.syntax.MissingFieldException;
+import bookkeeper.exceptions.syntax.TooFewFieldsException;
+import bookkeeper.exceptions.syntax.TooManyFieldsException;
+import bookkeeper.exceptions.syntax.UnknownGenreException;
 
 import  static bookkeeper.Constants.*;
 
@@ -89,10 +93,9 @@ public class Main {
     }
 
     /**
-     * Method to accomplish part 3
-     *
-     * @throws IOException when reading files
-     * @throws ClassNotFoundException when parsing binary file
+     * Method to process the files for part 3
+     * @throws IOException - exception thrown in case of an IO error
+     * @throws ClassNotFoundException - exception thrown in case of a class not found error
      */
     public static void do_part3() throws IOException, ClassNotFoundException {
         Utils.fillBooks();
