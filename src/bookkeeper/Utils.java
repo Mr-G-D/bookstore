@@ -18,7 +18,13 @@ import java.util.Scanner;
 import static bookkeeper.Constants.*;
 
 /**
+ * @author Sanjay Bharathi
  * @author DINESH KUMAR
+ * Assignment 2
+ * Written by: Dinesh Kumar Gopinathan - 40273281, Sanjay Bharathi Subramanian - 40248572
+ * 24 March 2024
+ *
+ *  This is where all the magic happens 🪄
  */
 
 public class Utils {
