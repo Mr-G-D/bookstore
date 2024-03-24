@@ -11,8 +11,25 @@ import  static bookkeeper.Constants.*;
 import java.io.*;
 import java.util.Scanner;
 
+/**
+ * @author Sanjay Bharathi
+ * @author DINESH KUMAR
+ * Assignment 2
+ * Written by: Dinesh Kumar Gopinathan - 40273281, Sanjay Bharathi Subramanian - 40248572
+ * 24 March 2024
+ *
+ *  This is the main class which reads the input files and processes them
+ */
+
 
 public class Main {
+    /**
+     * Main method to read the input files and process them
+     * @param args - command line arguments
+     * @throws IOException - exception thrown in case of an IO error
+     * @throws SemanticErrorException - exception thrown in case of a semantic error
+     * @throws ClassNotFoundException - exception thrown in case of a class not found error
+     */
     public static void main(String[] args) throws IOException, SemanticErrorException, ClassNotFoundException {
         System.out.println("Hello world!");
         do_part1();
